@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -26,4 +27,13 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    use SoftDeletes;
+
+    protected $dates = ['deleted_at'];
+
+    public function codes()
+    {
+        return $this->hasMany('App\Code','FK_user_id','id');
+    }
 }

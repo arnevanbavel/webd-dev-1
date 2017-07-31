@@ -15,6 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//Registration 
+Route::post('/register','Auth\RegisterController@register');
+
+Route::post('/home', array('as' => 'code', 'uses' => 'CodeController@store'));
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
