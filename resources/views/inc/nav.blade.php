@@ -46,6 +46,11 @@
                                             {{ csrf_field() }}
                                         </form>
                                     </li>
+                                @if(Auth::user()->admin1_user0 == 1)
+                                     <li>
+                                          <a href="/dashboard">Beheer Deelnemers</a>
+                                     </li>
+                                @endif
                                 </ul>
                             </li>
                         @endif

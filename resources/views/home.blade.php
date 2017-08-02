@@ -8,23 +8,27 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('home/submit') }}">
-                        {{ csrf_field() }}
-
-                        <div class="form-group{{ $errors->has('code') ? ' has-error' : '' }}">
-                            <label for="code" class="col-md-4 control-label">Code</label>
-
-                            <div class="col-md-6">
-                                <input id="code" type="code" class="form-control" name="code" value="{{ old('code') }}" required autofocus>
-
-                                @if ($errors->has('code'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('code') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+                @if(count($errors) > 0)
+                    @foreach($errors->all() as $error)
+                        <div class="alert alert-danger">
+                            {{$error}}
                         </div>
-                    </form>
+                    @endforeach
+                @endif
+
+                {!! Form::open(array('url' => 'home/submit', 'method' => 'POST')) !!}
+                    <div class="form-group">
+                        <li>
+                            {!! Form::label('code', 'Code:') !!}
+                            {!! Form::text('code', '', ['class' => 'form-control', 'placeholder' => 'Enter your code']) !!}
+                        </li>
+                    </div>
+                        <li>
+                            {!! Form::submit('Submit',['class' => 'btn btn-primary']) !!}
+                        </li>
+                    </ul>
+                {!! Form::close() !!}
+
                     {{$usedcodeMessage}}
                 </div>
             </div>

@@ -37,6 +37,11 @@ class CodeController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'code' => 'required'
+        ]);
+
+
         if(Auth::check())
         {
             $code = new Code;
@@ -45,7 +50,7 @@ class CodeController extends Controller
             $code->save();
             $usedcodeMessage = 'test1';
         }else{
-             $usedcodeMessage = 'test2';
+            $usedcodeMessage = 'test2';
         }
 
         return view('/home')

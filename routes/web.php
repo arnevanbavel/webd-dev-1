@@ -18,7 +18,7 @@ Route::get('/', function () {
 //Registration 
 Route::post('/register','Auth\RegisterController@register');
 
-Route::post('/home/submit', array('as' => 'code', 'uses' => 'CodeController@store'));
+Route::post('home/submit', array('as' => 'code', 'uses' => 'CodeController@store'));
 
 Auth::routes();
 
