@@ -1,0 +1,86 @@
+.call-to-action{
+	margin-top: 5vh;
+	margin-bottom: 5vh;
+	margin-left: 10vw;
+	margin-right: 10vw;
+	font-style: bold;
+
+	h1{
+		text-transform: uppercase;
+		font-family: $font-h1;
+	}
+}
+
+
+.welcome .navbar{
+    margin-bottom: 0px !important;
+}
+
+.navbar-brand {
+    padding: 0px;
+}
+       
+.navbar-brand>img {
+  	height: 100%;
+    padding: 2px;
+    width: auto;
+}
+
+.map{
+	max-width: 100%;
+	img{
+		position: relative;
+		max-width: 100%;
+	}
+}
+
+///////BUTTON
+
+button,
+button::after {
+  -webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+	transition: all 0.3s;
+	  color: $corona-yellow;
+}
+
+button {
+  background: none;
+  border: 3px solid $corona-yellow;
+  color: $corona-blue;
+  border-radius: 5px;
+  display: block;
+  font-size: 1.3em;
+  font-weight: bold;
+  margin: 1em auto;
+  padding: 20px;
+  position: relative;
+  text-transform: uppercase;
+}
+
+button::before,
+button::after {
+  background: $corona-yellow;
+  content: '';
+  position: absolute;
+  z-index: -1;
+}
+
+button:hover {
+  color: $corona-blue;
+}
+
+.btn-3::after {
+  height: 0;
+  left: 50%;
+  top: 50%;
+  width: 0;
+}
+
+.btn-3:hover:after {
+  height: 100%;
+  left: 0;
+  top: 0;
+  width: 100%;
+}

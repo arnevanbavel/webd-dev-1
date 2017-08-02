@@ -8,7 +8,7 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('home') }}">
+                    <form class="form-horizontal" method="POST" action="{{ route('home/submit') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('code') ? ' has-error' : '' }}">

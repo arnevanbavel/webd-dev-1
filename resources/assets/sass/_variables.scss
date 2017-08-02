@@ -1,6 +1,8 @@
 
 // Body
-$body-bg: #f5f8fa;
+$body-bg: #fff;
+$corona-yellow: #ffc627;
+$corona-blue: #0d223f;
 
 // Borders
 $laravel-border-color: darken($body-bg, 10%);
@@ -18,10 +20,11 @@ $brand-danger: #bf5329;
 
 // Typography
 $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
-$font-family-sans-serif: "Raleway", sans-serif;
-$font-size-base: 14px;
+$font-family-sans-serif: 'Roboto Slab', serif;
+$font-h1: 'Fjalla One', sans-serif;
+$font-size-base: 16px;
 $line-height-base: 1.6;
-$text-color: #636b6f;
+$text-color: #0d223f;
 
 // Navbar
 $navbar-default-bg: #fff;
