@@ -15,6 +15,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/test', function () {
+	$codes = App\Code::all();
+	foreach ($codes as $code ) {
+		echo $code->code .'belong to' . $code->user->name;
+	}
+
+	$user = App\User::find(1);
+	foreach ($user->codes as $code ) {
+		echo $code->code;
+	}
+
+    echo 'hallo'; 
+});
+
 //Registration 
 Route::post('/register','Auth\RegisterController@register');
 
@@ -26,7 +40,8 @@ Route::post('home/submit', array('as' => 'code', 'uses' => 'CodeController@store
 Route::get('/dashboard', 'DashboardController@show');
 Route::post('/dashboard/submit/valid', 'DashboardController@addValidCode');
 Route::post('/dashboard/submit/winning', 'DashboardController@addWinningCode');
-
+Route::get('/dashboard/delete/{id}', 'DashboardController@destroyUser');
+Route::get('/dashboard/restore/{id}', 'DashboardController@restoreUser');
 
 
 Auth::routes();

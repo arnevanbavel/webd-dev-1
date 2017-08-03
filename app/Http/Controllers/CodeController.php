@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Code;
-use App\BruikbareCode;
+use App\Geldigecode;
+use App\Winningcode;
+use App\Winner;
 use Auth;
 use Illuminate\Support\Facades\Input;
 
@@ -42,22 +44,88 @@ class CodeController extends Controller
             'code' => 'required'
         ]);
 
+        if(Auth::check())   //kijken of user is ingelogt
+        {   
 
-        if(Auth::check())
+            $ingegevenCodes = Code::all();
+            $nogNietGebruikt = true;
+
+            foreach ($ingegevenCodes as $ingegevenCode) {
+                if ($ingegevenCode->code == $request->input('code')) {
+                    $nogNietGebruikt = false;
+                }
+            }
+
+            if ($nogNietGebruikt) 
+            {
+                $geldigecodes = GeldigeCode::all();
+                $geldig = false;
+
+                foreach ($geldigecodes as $geldigecode) {
+                    if ($geldigecode->code == $request->input('code')) {
+                        $geldig = true;
+                    }
+                }
+
+                if ($geldig) {
+
+                    $winningcodes = Winningcode::all();
+                    $winning = false;
+
+                    foreach ($winningcodes as $winningcode) {
+                        if ($winningcode->winnendeCode == $request->input('code')) {
+                            $winning = true;
+                        }
+                    }
+
+                    $code = new Code;
+                    $code->code = Input::get('code');
+                    $code->FK_user_id = Auth::user()->id;
+                    $code->save();
+
+                    if ($winning) {
+                        //Winnende code
+                        $winner = new Winner;
+                        $winner->winnendeCode = Input::get('code');
+                        $winner->FK_user_id = Auth::user()->id;
+
+                        $land = Winningcode::select('Land')->where('winnendeCode', $request->input('code'))->get();
+                        $winner->land = $land[0]->Land;
+                        $winner->save();
+
+                        $status = 'success';
+                        $message = 'U heeft gewonnen u gaat naar ' . $land[0]->Land . ', U zal binnekort gecontacteerd worden';
+                    }
+                    else
+                    {
+                        //Valse code
+                        $status = 'info';
+                        $message = 'Jammer! U heeft niet gewonnen volgende keer beter';
+                    }
+                }
+                else
+                {
+                    //Valse code
+                    $status = 'danger';
+                    $message = 'Dit is geen correcte code';
+                } 
+            }
+            else
+            {
+                //all een keer gebruikt
+                $status = 'danger';
+                $message = 'Deze code is al eens gebruikt';
+            }
+        }
+        else
         {
-            $code = new Code;
-            $code->code = Input::get('code');
-            $code->FK_user_id = Auth::user()->id;
-            $code->save();
-            $usedcodeMessage = 'test1';
-
-
-        }else{
-            $usedcodeMessage = 'test2';
+            //niet ingelogt
+            return redirect('/login');
         }
 
-        return view('/home')
-        ->with('usedcodeMessage', $usedcodeMessage);
+        return redirect('/home')
+        ->with('message', $message)
+        ->with('status', $status);
     }
 
     /**

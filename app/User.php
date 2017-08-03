@@ -34,6 +34,6 @@ class User extends Authenticatable
 
     public function codes()
     {
-        return $this->hasMany('App\Code','FK_user_id','id');
+        return $this->hasMany('App\Code');
     }
 }

@@ -22,6 +22,9 @@
                 {!! Form::text('code', '', ['class' => 'form-control', 'placeholder' => 'Enter your code']) !!}
             </div>
             <div class="form-group">
+                {!! Form::select('land', ['Mexico' => 'Mexico', 'Chile' => 'Chile', 'Italy' => 'Italy', 'Maldives' => 'Maldives', 'Australia' => 'Australia'], 'Mexico') !!}
+            </div>
+            <div class="form-group">
                 {!! Form::submit('Submit',['class' => 'btn btn-primary']) !!}
             </div>
         {!! Form::close() !!}
@@ -35,7 +38,7 @@
             <th>ID</th>
             <th>Name</th>
             <th>Email</th>
-            <th>Ip Adress</th>
+            <th>Codes</th>
             <th>Role</th>
             <th>Edit/Remove</th>
           </tr>
@@ -45,7 +48,7 @@
             <th>ID</th>
             <th>Firstname</th>
             <th>Email</th>
-            <th>Ip Adress</th>
+            <th>Codes</th>
             <th>Role</th>
             <th>Edit/Remove</th>
           </tr>
@@ -54,18 +57,26 @@
             @if(count($users) > 0)
                 @foreach($users->all() as $user )
                   <tr>
-					<td>{{$user->id}}</td>
+					      <td>{{$user->id}}</td>
 		            <td>{{$user->name}}</td>
 		            <td>{{$user->email}}</td>
-		            <td>{{$user->ipAddress}}</td>
-		            @if($user->admin1_user0 = 0)
+		            <td>
+                @foreach($user->codes as $code )
+                  {{$code->code}},
+                @endforeach
+                </td>
+		            @if($user->admin1_user0 == 0)
 		            	<td>User</td>
 		            @else
 		            	<td>Admin</td>
 		            @endif
-		     		<td>
-		     			<a href='#' class='btn btn-success'><span class='glyphicon glyphicon-edit'></span></a> 
-		     		</td>
+    		     		<td>
+                  @if($user->deleted_at != NULL)
+                    <a href="/dashboard/restore/{{$user->id}}">Kwalificeren</a>
+                  @else
+                    <a href="/dashboard/delete/{{$user->id}}">Diskwalificeren</a>
+                  @endif
+    		     		</td>
 		          </tr>
                 @endforeach
             @endif

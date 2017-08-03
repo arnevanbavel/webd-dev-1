@@ -36,6 +36,9 @@
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
+                                         <a href="/home">Contest</a>
+                                    </li>
+                                    <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -48,7 +51,7 @@
                                     </li>
                                 @if(Auth::user()->admin1_user0 == 1)
                                      <li>
-                                          <a href="/dashboard">Beheer Deelnemers</a>
+                                          <a href="/dashboard">Admin</a>
                                      </li>
                                 @endif
                                 </ul>
