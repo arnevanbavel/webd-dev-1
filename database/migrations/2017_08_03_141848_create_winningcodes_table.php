@@ -4,19 +4,19 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateWinnendeCodesTable extends Migration
+class CreateWinningcodesTable extends Migration
 {
     public function up()
     {
-        Schema::create('winnendeCodes', function(Blueprint $table) {
+        Schema::create('winningcodes', function(Blueprint $table) {
             $table->increments('id');
             $table->string('winnendeCode', 60);
-            $table->integer('maand')->nullable();
+            $table->string('Land', 30);
         });
     }
 
     public function down()
     {
-        Schema::drop('winnendeCodes');
+        Schema::drop('winningcodes');
     }
 }

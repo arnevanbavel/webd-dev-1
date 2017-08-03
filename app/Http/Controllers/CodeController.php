@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Code;
+use App\BruikbareCode;
 use Auth;
 use Illuminate\Support\Facades\Input;
 
@@ -49,6 +50,8 @@ class CodeController extends Controller
             $code->FK_user_id = Auth::user()->id;
             $code->save();
             $usedcodeMessage = 'test1';
+
+
         }else{
             $usedcodeMessage = 'test2';
         }

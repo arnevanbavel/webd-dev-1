@@ -18,15 +18,12 @@
 
                 {!! Form::open(array('url' => 'home/submit', 'method' => 'POST')) !!}
                     <div class="form-group">
-                        <li>
-                            {!! Form::label('code', 'Code:') !!}
-                            {!! Form::text('code', '', ['class' => 'form-control', 'placeholder' => 'Enter your code']) !!}
-                        </li>
+                        {!! Form::label('code', 'Code:') !!}
+                        {!! Form::text('code', '', ['class' => 'form-control', 'placeholder' => 'Enter your code']) !!}
                     </div>
-                        <li>
-                            {!! Form::submit('Submit',['class' => 'btn btn-primary']) !!}
-                        </li>
-                    </ul>
+                    <div class="form-group">
+                        {!! Form::submit('Submit',['class' => 'btn btn-primary']) !!}
+                    </div>
                 {!! Form::close() !!}
 
                     {{$usedcodeMessage}}

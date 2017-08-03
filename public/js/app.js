@@ -803,6 +803,10 @@ var app = new Vue({
   el: '#app'
 });
 
+$(document).ready(function () {
+  $('#example').DataTable();
+});
+
 /***/ }),
 /* 10 */
 /***/ (function(module, exports, __webpack_require__) {
