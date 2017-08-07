@@ -30,6 +30,7 @@
         {!! Form::close() !!}
   	</div>
   </div>
+
   <div class="row">
     <div class="col-sm-12 adminTable">
       <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
@@ -46,7 +47,7 @@
         <tfoot>
           <tr>
             <th>ID</th>
-            <th>Firstname</th>
+            <th>Name</th>
             <th>Email</th>
             <th>Codes</th>
             <th>Role</th>
@@ -83,6 +84,50 @@
         </tbody>
       </table>
     </div> 
-  </div>     
+  </div> 
+
+  <div class="row">
+    <div class="col-sm-12 text-center">
+      <h2>Winners</h2>
+    </div>
+    <div class="col-sm-12 testTable">
+      <table id="winnersTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Winnende Codes</th>
+            <th>Land</th>
+            <th>Wanneer</th>
+          </tr>
+        </thead>
+        <tfoot>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Winnende Codes</th>
+            <th>Land</th>
+            <th>Wanneer</th>
+          </tr>
+        </tfoot>
+        <tbody>
+            @if(count($winners) > 0)
+                @foreach($winners->all() as $winner )
+                <tr>
+                  <td>{{$winner->user->id}}</td>
+                  <td>{{$winner->user->name}}</td>
+                  <td>{{$winner->user->email}}</td>
+                  <td>{{$winner->winnendeCode}}</td>
+                  <td>{{$winner->land}}</td>
+                  <td>{{$winner->maand}}</td>
+                </tr>
+                @endforeach
+            @endif
+        </tbody>
+      </table>
+    </div> 
+  </div>      
 </div>
 @endsection

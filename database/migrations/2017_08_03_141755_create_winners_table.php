@@ -10,8 +10,9 @@ class CreateWinnersTable extends Migration
     {
         Schema::create('winners', function(Blueprint $table) {
             $table->increments('id');
-            $table->integer('FK_user_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->string('winnendeCode', 60);
+            $table->string('maand', 60);
             $table->string('land', 30);
             $table->timestamps();
         });

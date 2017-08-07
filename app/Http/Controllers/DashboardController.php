@@ -8,14 +8,19 @@ use App\Code;
 use App\User;
 use App\Geldigecode;
 use App\Winningcode;
+use App\Winner;
 
 class DashboardController extends Controller
 {
     public function show()
     {
     	$users = User::withTrashed()->get();
+        $winners = Winner::all();
 
-        return view('dashboard')->with('users',$users);
+        return view('dashboard')
+        ->with('users',$users)
+        ->with('winners',$winners);
+
     }
 
     public function addValidCode(Request $request)

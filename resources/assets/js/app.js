@@ -24,3 +24,8 @@ const app = new Vue({
 $(document).ready(function(){
     $('#example').DataTable();
 });
+$(document).ready(function(){
+    $('#winnersTable').DataTable();
+});
+
+winnersTable

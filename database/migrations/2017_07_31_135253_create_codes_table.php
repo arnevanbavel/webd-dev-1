@@ -10,7 +10,7 @@ class CreateCodesTable extends Migration
     {
         Schema::create('codes', function(Blueprint $table) {
             $table->increments('code_id');
-            $table->integer('FK_user_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->string('code', 60);
             $table->timestamps();
         });

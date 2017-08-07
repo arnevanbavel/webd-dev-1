@@ -47,7 +47,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="tagline">Business Name or Tagline</h1>
+                    <h1 class="tagline">Corona</h1>
                 </div>
             </div>
         </div>
@@ -75,6 +75,41 @@
             </div>
         </div>
       </div>
+
+    <div class="row">
+        <div class="col-sm-12 text-center">
+            <h1>WINNERS PREVIOUS MONTH</h1>
+        </div>
+    </div>
+
+    @if(count($winners) > 0)
+    <div class="wrappertable">
+      <div class="table">
+        <div class="row header green">
+          <div class="cell">Naam</div>
+          <div class="cell"></div>
+          <div class="cell">Land</div>
+          <div class="cell">Winning code</div>
+          <div class="cell">Status</div>
+        </div>
+            @foreach($winners->all() as $winner )
+                <div class="row">
+                    <div class="cell">{{$winner->user->name}}</div>
+                    <div class="cell">Is flying too</div>
+                    <div class="cell">{{$winner->land}}</div>
+                    <div class="cell">{{$winner->winnendeCode}}</div>
+                    <div class="cell">party</div>
+                </div>
+            @endforeach
+      </div>
+    </div>
+    @else
+    <div class="row">
+        <div class="col-sm-12 text-center">
+            <h2>NO WINNERS PREVIOUS MONTH</h2>
+        </div>
+    </div>
+    @endif
 
         <!-- Footer -->
         <footer>

@@ -800,12 +800,17 @@ window.Vue = __webpack_require__(35);
 Vue.component('example', __webpack_require__(36));
 
 var app = new Vue({
-  el: '#app'
+    el: '#app'
 });
 
 $(document).ready(function () {
-  $('#example').DataTable();
+    $('#example').DataTable();
 });
+$(document).ready(function () {
+    $('#winnersTable').DataTable();
+});
+
+winnersTable;
 
 /***/ }),
 /* 10 */

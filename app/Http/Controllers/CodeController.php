@@ -80,14 +80,15 @@ class CodeController extends Controller
 
                     $code = new Code;
                     $code->code = Input::get('code');
-                    $code->FK_user_id = Auth::user()->id;
+                    $code->user_id = Auth::user()->id;
                     $code->save();
 
                     if ($winning) {
                         //Winnende code
                         $winner = new Winner;
                         $winner->winnendeCode = Input::get('code');
-                        $winner->FK_user_id = Auth::user()->id;
+                        $winner->user_id = Auth::user()->id;
+                        $winner->maand = "nu";
 
                         $land = Winningcode::select('Land')->where('winnendeCode', $request->input('code'))->get();
                         $winner->land = $land[0]->Land;
