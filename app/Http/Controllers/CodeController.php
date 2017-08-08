@@ -8,7 +8,9 @@ use App\Geldigecode;
 use App\Winningcode;
 use App\Winner;
 use Auth;
+use Mail;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Mail\Mailer;
 
 class CodeController extends Controller
 {
@@ -93,6 +95,23 @@ class CodeController extends Controller
                         $land = Winningcode::select('Land')->where('winnendeCode', $request->input('code'))->get();
                         $winner->land = $land[0]->Land;
                         $winner->save();
+
+                        $content = "Er is een nieuwe winnaar van het corona event. ".
+                                    Auth::user()->name ." - ".
+                                    Auth::user()->email ." - ".
+                                    Input::get('code')." - ".
+                                    $land[0]->Land;
+
+                        //Mail::to('arninio123@gmail.com')->send(new \App\Mail\MyMail('Winnaar',$content));
+
+                        /*Mail::send('send', ['title' => 'Winnaar', 'content' => $content], function ($message)
+                        {
+
+                            $message->from('arninio123@gmail.com', 'Arne Van Bavel');
+
+                            $message->to('arne.vanbavel@hotmail.com');
+
+                        });*/
 
                         $status = 'success';
                         $message = 'U heeft gewonnen u gaat naar ' . $land[0]->Land . ', U zal binnekort gecontacteerd worden';
