@@ -41,7 +41,7 @@ class CodeController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'code' => 'required'
+            'code' => 'required|string|max:10'
         ]);
 
         if(Auth::check())   //kijken of user is ingelogt

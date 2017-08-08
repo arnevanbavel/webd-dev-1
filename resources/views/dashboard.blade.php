@@ -30,7 +30,7 @@
         {!! Form::close() !!}
   	</div>
   </div>
-
+  <a href="{{action('DashboardController@excel')}}">Export users</a>
   <div class="row">
     <div class="col-sm-12 adminTable">
       <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">

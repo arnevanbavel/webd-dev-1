@@ -9,6 +9,7 @@ use App\User;
 use App\Geldigecode;
 use App\Winningcode;
 use App\Winner;
+use Excel;
 
 class DashboardController extends Controller
 {
@@ -26,7 +27,7 @@ class DashboardController extends Controller
     public function addValidCode(Request $request)
     {
     	$this->validate($request, [
-            'code' => 'required'
+            'code' => 'required|string|max:10'
         ]);
 
     	$geldigecode = new Geldigecode;
@@ -39,7 +40,7 @@ class DashboardController extends Controller
     public function addWinningCode(Request $request)
     {
     	$this->validate($request, [
-            'code' => 'required',
+            'code' => 'required|string|max:10',
             'land' => 'required'
         ]);
 
@@ -70,5 +71,17 @@ class DashboardController extends Controller
         $specificUser->restore();
 
         return redirect('dashboard')->with('success', 'User succesvol gekwalificeert');
+    }
+
+    public function excel()
+    {
+        $users = User::withTrashed()->get();
+
+        Excel::create('users', function($excel) use($users) {
+            $excel->sheet('ExportFile', function($sheet) use($users) {
+                $sheet->fromArray($users);
+            });
+        })->export('xls');;
+
     }
 }

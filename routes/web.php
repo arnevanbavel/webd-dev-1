@@ -39,6 +39,7 @@ Route::post('/dashboard/submit/valid', 'DashboardController@addValidCode');
 Route::post('/dashboard/submit/winning', 'DashboardController@addWinningCode');
 Route::get('/dashboard/delete/{id}', 'DashboardController@destroyUser');
 Route::get('/dashboard/restore/{id}', 'DashboardController@restoreUser');
+Route::get('/excel', 'DashboardController@excel');
 
 
 Auth::routes();

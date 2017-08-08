@@ -32,8 +32,8 @@
             </div>
         </div>
     </div>
+    <hr>
 </div>
-</br>
 </br>
 </br>
 <div class="container">  
