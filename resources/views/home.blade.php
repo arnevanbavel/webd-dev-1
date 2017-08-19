@@ -44,9 +44,19 @@
         <div class="col-md-6 text-left">
             <div>
                 <h2>How its works</h2>
-                <p>Corona Extra’s little brother. The same refreshing taste, just in a smaller 21cl. Bottle. Perfect for when you want a mini-break from the hectic everyday, this small, easy-going beer goes easy with friends, sun and sand.</p>
+                <p>On every bottle of corona you can find a code. Which you can enter after the registration on the contest page. 
+You will see immediately if you won or not. Every winner will be contacted by mail, By our contest manager</p>
             </div>
         </div>
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Corona 2017</p>
+                </div>
+            </div>
+            <!-- /.row -->
+        </footer>
 </div>
 
 @endsection
