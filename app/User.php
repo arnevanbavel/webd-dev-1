@@ -10,6 +10,11 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    public function admin()
+    {
+        return $this->admin1_user0;
+    }
+
     /**
      * The attributes that are mass assignable.
      *
